@@ -88,7 +88,7 @@ servers:
 alerts:
   slack_webhook: "${SLACK_WEBHOOK_URL}"
   email_enabled: true
-  email_to: "devops@example.com"
+  email_to: "bamclueaws@gmail.com"
 ```
 
 ### Step 4: Implement Health Check Functions
