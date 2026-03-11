@@ -1,0 +1,58 @@
+[
+  {
+    "line_number": 1,
+    "raw": "2024-03-09 10:15:23 INFO User 192.168.1.100 logged in successfully",
+    "level": "INFO",
+    "timestamp": "2024-03-09 10:15:23",
+    "ip_addresses": []
+  },
+  {
+    "line_number": 2,
+    "raw": "2024-03-09 10:15:45 WARNING Database connection slow: 2.3s",
+    "level": "WARNING",
+    "timestamp": "2024-03-09 10:15:45",
+    "ip_addresses": []
+  },
+  {
+    "line_number": 3,
+    "raw": "2024-03-09 10:16:12 ERROR Failed to process payment: transaction_id=12345",
+    "level": "ERROR",
+    "timestamp": "2024-03-09 10:16:12",
+    "ip_addresses": []
+  },
+  {
+    "line_number": 4,
+    "raw": "2024-03-09 10:16:15 ERROR Database connection failed: timeout after 30s",
+    "level": "ERROR",
+    "timestamp": "2024-03-09 10:16:15",
+    "ip_addresses": []
+  },
+  {
+    "line_number": 5,
+    "raw": "2024-03-09 10:17:00 INFO User 192.168.1.101 logged out",
+    "level": "INFO",
+    "timestamp": "2024-03-09 10:17:00",
+    "ip_addresses": []
+  },
+  {
+    "line_number": 6,
+    "raw": "2024-03-09 10:17:23 ERROR Failed to process payment: transaction_id=12346",
+    "level": "ERROR",
+    "timestamp": "2024-03-09 10:17:23",
+    "ip_addresses": []
+  },
+  {
+    "line_number": 7,
+    "raw": "2024-03-09 10:18:45 WARNING High memory usage: 85%",
+    "level": "WARNING",
+    "timestamp": "2024-03-09 10:18:45",
+    "ip_addresses": []
+  },
+  {
+    "line_number": 8,
+    "raw": "2024-03-09 10:19:12 ERROR Failed to send email to user@example.com",
+    "level": "ERROR",
+    "timestamp": "2024-03-09 10:19:12",
+    "ip_addresses": []
+  }
+]
