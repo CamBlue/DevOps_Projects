@@ -9,7 +9,7 @@ variable "aws_region" {
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 variable "instance_name" {
@@ -47,7 +47,7 @@ variable "ssh_public_key_path" {
 variable "allowed_ssh_cidr" {
   description = "CIDR block allowed to access the EC2 instance via SSH"
   type        = string
-  default     = "0.0.0.0/0" #Change this to your IP for Prod
+  default     = "73.78.131.222/32" #Change this to your IP for Prod
 }
 
 # TAGS

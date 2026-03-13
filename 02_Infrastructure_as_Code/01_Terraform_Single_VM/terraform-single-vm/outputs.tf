@@ -27,7 +27,7 @@ output "subnet_id" {
 
 output "security_group_id" {
   description = "ID of the security group"
-  value       = aws_security_group.ssh.id
+  value       = aws_security_group.instance.id
 }
 
 # Connection Information

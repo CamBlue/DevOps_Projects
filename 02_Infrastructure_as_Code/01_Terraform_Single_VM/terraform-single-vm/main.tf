@@ -22,7 +22,7 @@ data "aws_ami" "amazon_linux" {
 
   filter {
     name   = "name"
-    values = ["al2023-ami-*-x86_64-gp2 "]
+    values = ["al2023-ami-*-x86_64"]
   }
 
   filter {
@@ -30,7 +30,9 @@ data "aws_ami" "amazon_linux" {
     values = ["hvm"]
   }
 
+  owners = ["amazon"]
 }
+
 
 #Create VPC
 resource "aws_vpc" "main" {
@@ -146,10 +148,10 @@ data "aws_ami" "amazon_linux_2023" {
 }
 # Create EC2 Instance
 resource "aws_instance" "main" {
-  ami                    = data.aws_ami.amazon_linux_2023.id
+  ami                    = data.aws_ami.amazon_linux.id
   instance_type          = var.instance_type
   key_name               = aws_key_pair.deployer.key_name
-  vpc_security_group_ids = [aws_security_group.ssh.id]
+  vpc_security_group_ids = [aws_security_group.instance.id]
   subnet_id              = aws_subnet.public.id
 
   # User data script (optional - installs Apache)
@@ -164,7 +166,7 @@ resource "aws_instance" "main" {
 
   # Root volume configuration
   root_block_device {
-    volume_size           = 8
+    volume_size           = 30
     volume_type           = "gp3"
     delete_on_termination = true
     encrypted             = true
