@@ -1,0 +1,41 @@
+# Local .terraform directory (downloaded providers/modules)
+.terraform/
+
+# Terraform lock file for providers (optional - some teams commit this)
+# .terraform.lock.hcl
+
+# State files - NEVER commit these, contain sensitive data
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Plan files - can contain sensitive values
+*.tfplan
+*.plan
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Override files (local overrides, not for team sharing)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Vars files that likely contain secrets
+*.tfvars
+*.tfvars.json
+
+# SSH keys - critical, never commit
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# VS Code settings (optional - some teams commit this)
+.vscode/
