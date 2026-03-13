@@ -1,15 +1,17 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='devops-cli',
     version='1.0.0',
-    py_modules=['cli'],
+    packages=find_packages(),
+    py_modules=['cli', 'helpers'],
     install_requires=[
         'click',
         'rich',
         'tabulate',
         'pyyaml',
-        'requests'
+        'requests',
+        'boto3',
     ],
     entry_points={
         'console_scripts': [

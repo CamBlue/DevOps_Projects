@@ -6,4 +6,5 @@ Requires-Dist: rich
 Requires-Dist: tabulate
 Requires-Dist: pyyaml
 Requires-Dist: requests
+Requires-Dist: boto3
 Dynamic: requires-dist

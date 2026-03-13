@@ -3,3 +3,4 @@ rich
 tabulate
 pyyaml
 requests
+boto3
