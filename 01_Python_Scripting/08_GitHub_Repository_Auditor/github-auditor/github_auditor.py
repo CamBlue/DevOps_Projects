@@ -3,7 +3,7 @@ import re
 import json
 import argparse
 from datetime import datetime
-from github import Github, GithubException
+from github import Github, GithubException, Auth
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -16,7 +16,7 @@ class GitHubAuditor:
         if not self.token:
             raise ValueError("GitHub token required")
 
-        self.github = Github(self.token)
+        self.github = Github(auth=Auth.Token(self.token))
         self.user = self.github.get_user()
         print(f"✓ Authenticated as: {self.user.login}")
 
@@ -137,20 +137,33 @@ class GitHubAuditor:
             })
         else:
             # Check protection rules
-            protection = default_branch.get_protection()
+            try:
+                protection = default_branch.get_protection()
 
-            if not protection.required_pull_request_reviews:
-                issues.append({
-                    'severity': 'MEDIUM',
-                    'category': 'Branches',
-                    'message': 'Pull request reviews not required'
-                })
+                if not protection.required_pull_request_reviews:
+                    issues.append({
+                        'severity': 'MEDIUM',
+                        'category': 'Branches',
+                        'message': 'Pull request reviews not required'
+                    })
 
-            if not protection.enforce_admins.enabled:
+                enforce_admins = protection.enforce_admins
+                if isinstance(enforce_admins, bool):
+                    admin_enforced = enforce_admins
+                else:
+                    admin_enforced = enforce_admins.enabled
+
+                if not admin_enforced:
+                    issues.append({
+                        'severity': 'LOW',
+                        'category': 'Branches',
+                        'message': 'Branch protection not enforced for admins'
+                    })
+            except GithubException:
                 issues.append({
-                    'severity': 'LOW',
+                    'severity': 'INFO',
                     'category': 'Branches',
-                    'message': 'Branch protection not enforced for admins'
+                    'message': 'Could not read branch protection details (may require admin access)'
                 })
 
         return issues
